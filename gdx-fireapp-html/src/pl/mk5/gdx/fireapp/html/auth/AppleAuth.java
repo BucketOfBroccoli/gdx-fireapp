@@ -22,7 +22,7 @@ import pl.mk5.gdx.fireapp.auth.GdxFirebaseUser;
 import pl.mk5.gdx.fireapp.distributions.AppleAuthDistribution;
 import pl.mk5.gdx.fireapp.promises.Promise;
 
-class AppleAuth implements AppleAuthDistribution {
+public class AppleAuth implements AppleAuthDistribution {
     @Override
     public Promise<GdxFirebaseUser> signIn() {
         throw new UnsupportedOperationException("not yet.");
