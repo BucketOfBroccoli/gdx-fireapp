@@ -16,6 +16,7 @@
 
 package pl.mk5.gdx.fireapp.promises;
 
+import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 
@@ -65,7 +66,8 @@ public class ConverterPromise<T, R> extends FutureListenerPromise<R> {
             }
             if (object != null) {
                 if (!ClassReflection.isAssignableFrom(List.class, wantedDataType)) {
-                    if (mapConverter.isPojo(wantedDataType)) {
+                    // If Json.Serializable is implemented, assume the POJO is already set
+                    if (mapConverter.isPojo(wantedDataType) && !(object instanceof Json.Serializable)) {
                         object = mapConverter.doMitmConversion(wantedDataType, object);
                     }
                 } else {
